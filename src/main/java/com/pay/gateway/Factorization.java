@@ -18,16 +18,16 @@ public class Factorization {
     public static void factor(int num) {
         double sqr = Math.sqrt(num);
         System.out.println("因数分解结果：");
-        for(int i=2;i<=sqr;i++){
-            if(num%i == 0) {
-                System.out.print(i+" ");
-                num/=i;
+        for (int i = 2; i <= sqr; i++) {
+            if (num % i == 0) {
+                System.out.print(i + " ");
+                num /= i;
                 i--;
             }
         }
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         factor(100);
     }
 }
