@@ -46,7 +46,7 @@ public class AESUtils {
     public static String encrypt(String key,String data) throws Exception{
         //获取key
         SecretKey secretKey = new SecretKeySpec(Base64.getDecoder().decode(key.getBytes()),AES);
-        //根据指定算法自成密码器
+        //根据指定算法生成密码器
         Cipher cipher=Cipher.getInstance(AES);
         //初始化密码器，第一个参数为加密或者解密解密操作，第二个参数为使用的KEY
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
@@ -56,10 +56,18 @@ public class AESUtils {
         byte [] AES_data=cipher.doFinal(byte_data);
         return new String(new BASE64Encoder().encode(AES_data));
     }
+
+    /*
+     * @Author boy
+     * @Description 使用AES密钥加密数据
+     * @Date 2019/8/22 8:06 PM
+     * @Param [key, data]
+     * @return java.lang.String
+     */
     public static String decrypt(String key,String data) throws Exception{
         //获取key
         SecretKeySpec secretKey = new SecretKeySpec(Base64.getDecoder().decode(key.getBytes()),AES);
-        //根据指定算法自成密码器
+        //根据指定算法生成密码器
         Cipher cipher=Cipher.getInstance(AES);
         //初始化密码器，第一个参数为加密或者解密解密操作，第二个参数为使用的KEY
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
@@ -70,13 +78,7 @@ public class AESUtils {
         return new String(decryptData);
     }
 
-    /*
-     * @Author boy
-     * @Description 使用AES密钥加密数据
-     * @Date 2019/8/22 10:51 AM
-     * @Param [args]
-     * @return void
-     */
+
     public static void main(String[] args) throws Exception{
         String data = "你好！AES";
         String key = genAESKey();
