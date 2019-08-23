@@ -1,6 +1,5 @@
 package com.pay.gateway.aes;
 
-import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -10,7 +9,7 @@ import java.util.Base64;
 
 /**
  * @ClassName AESUtils
- * @Description TODO
+ * @Description AES加密算法工具类
  * @Author boy
  * @Date 2019/8/21 8:52 PM
  */
@@ -54,7 +53,7 @@ public class AESUtils {
         byte [] byte_data=data.getBytes(UTF_8);
         //将字节数组加密
         byte [] AES_data=cipher.doFinal(byte_data);
-        return new String(new BASE64Encoder().encode(AES_data));
+        return new String(Base64.getEncoder().encode(AES_data));
     }
 
     /*
@@ -80,7 +79,7 @@ public class AESUtils {
 
 
     public static void main(String[] args) throws Exception{
-        String data = "你好！AES";
+        String data = "你好！AES!";
         String key = genAESKey();
         System.out.println("密钥："+key);
         System.out.println("加密前数据："+data);
